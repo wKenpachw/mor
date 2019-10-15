@@ -4,59 +4,60 @@ from JournalLine import JournalLine
 
 
 class Journal:
-    allLines = []
-    positionMoney = {'engineer': 100, 'programmer': 150}
-    namePosition = {'Alex': 'engineer', 'Dan': 'programmer'}
-    allNames = set()
-    nowNames = set()
-    jName = ""
-    nameTime = {}
+    all_lines = []
+    position_money = {'engineer': 100, 'programmer': 150}
+    name_position = {'Alex': 'engineer', 'Dan': 'programmer'}
+    all_names = set()
+    now_names = set()
+    journal_name = ""
+    name_time = {}
 
-    nameTime.setdefault('Alex', 0)
+    # name_time.setdefault('Alex', 0)
 
     # give name when crate journal
     def __init__(self, name):
-        self.jName = name
+        self.journal_name = name
 
-    # set new line in the journal whith ented name and whit startTime as curent time, if this user allready started print this information
-    def setNewLine(self, name):
-        if name in self.nowNames:
+    # set new line in the journal with entered name and whit startTime as current time,
+    # if this user already started print this information
+    def set_new_line(self, name):
+        if name in self.now_names:
             print("That user already started")
         else:
-            self.allLines.append(JournalLine(name))
-            self.nowNames.add(name)
+            self.all_lines.append(JournalLine(name))
+            self.now_names.add(name)
             print("start", name)
 
-    def fillLine(self, name):
-        if name in self.nowNames:
-            for l in self.allLines:
-                if (l.getUserName() == name) and (not l.getIsFull()):
-                    l.setDateEnd(datetime.today())
-                    l.setFullLineTrue()
-                    self.removeNowNames(name)
+    def fill_line(self, name):
+        if name in self.now_names:
+            for l in self.all_lines:
+                if (l.get_user_name() == name) and (not l.get_is_full()):
+                    l.set_date_end(datetime.today())
+                    l.set_full_line_true()
+                    self.remove_now_names(name)
 
-    def setAllNames(self):
-        for l in self.allLines:
-            self.allNames.add(l.getUserName())
+    def set_all_names(self):
+        for l in self.all_lines:
+            self.all_names.add(l.get_user_name())
 
-    def removeNowNames(self, name):
-        self.nowNames.remove(name)
+    def remove_now_names(self, name):
+        self.now_names.remove(name)
 
-    def getTotalNameTime(self):
-        for name in self.allNames:
-            for l in self.allLines:
-                if name == l.getUserName():
-                    if not self.nameTime.get(name):
-                        self.nameTime.update({name: (l.getWorkTime())})
+    def get_total_name_time(self):
+        for name in self.all_names:
+            for l in self.all_lines:
+                if name == l.get_user_name():
+                    if not self.name_time.get(name):
+                        self.name_time.update({name: (l.get_work_time())})
                     else:
-                        self.nameTime.update({name: (self.nameTime.get(name) + l.getWorkTime())})
-        print(self.nameTime)
+                        self.name_time.update({name: (self.name_time.get(name) + l.get_work_time())})
+        print(self.name_time)
 
-    def getTotalNameMoney(self):
-        for name in self.allNames:
-            print(name, (self.positionMoney.get(self.namePosition.get(name)) * self.nameTime.get(name))//60)
+    def get_total_name_money(self):
+        for name in self.all_names:
+            print(name, (self.position_money.get(self.name_position.get(name)) * self.name_time.get(name)) // 60)
 
-    def setTimeStart(self, name, dates):
-        for l in self.allLines:
-            if (not l.getIsFull()) and (l.getUserName() == name):
-                l.setDateStart(dates)
+    def set_time_start(self, name, dates):
+        for l in self.all_lines:
+            if (not l.get_is_full()) and (l.get_user_name() == name):
+                l.set_date_start(dates)

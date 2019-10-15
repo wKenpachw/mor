@@ -1,29 +1,28 @@
 import datetime
 
 from Journal import Journal
-import time
 
 journal = Journal('first')
 
-journal.setNewLine('Alex')
-journal.setNewLine('Dan')
-journal.setTimeStart('Alex', datetime.datetime.today() - datetime.timedelta(seconds=36000))
-journal.setTimeStart('Dan', datetime.datetime.today() - datetime.timedelta(seconds=3600))
+journal.set_new_line('Alex')
+journal.set_new_line('Dan')
+journal.set_time_start('Alex', datetime.datetime.today() - datetime.timedelta(seconds=36000))
+journal.set_time_start('Dan', datetime.datetime.today() - datetime.timedelta(seconds=3600))
 
-journal.fillLine('Alex')
-journal.fillLine('Dan')
+journal.fill_line('Alex')
+journal.fill_line('Dan')
 
-journal.setNewLine('Alex')
-journal.setNewLine('Dan')
+journal.set_new_line('Alex')
+journal.set_new_line('Dan')
 
-journal.setTimeStart('Alex', datetime.datetime.today() - datetime.timedelta(seconds=3600))
-journal.setTimeStart('Dan', datetime.datetime.today() - datetime.timedelta(seconds=7200))
+journal.set_time_start('Alex', datetime.datetime.today() - datetime.timedelta(seconds=3600))
+journal.set_time_start('Dan', datetime.datetime.today() - datetime.timedelta(seconds=7200))
 
-journal.fillLine('Alex')
-journal.fillLine('Dan')
+journal.fill_line('Alex')
+journal.fill_line('Dan')
 
-journal.setAllNames()
-journal.getTotalNameTime()
-journal.getTotalNameMoney()
+journal.set_all_names()
+journal.get_total_name_time()
+journal.get_total_name_money()
 
 
