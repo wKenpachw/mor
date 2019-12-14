@@ -2,7 +2,7 @@ import random
 from atribute_skill import Atribute_skill
 
 class Atribute(object):
-    _name           = ""
+    _name           = str()
     _val            = int()
     _bonuse         = int()
     _mastered       = bool()
@@ -39,6 +39,10 @@ class Atribute(object):
     def get_skill(self, name:str):
         return self._atribute_skills[name]
 
+    def test(self):
+        """метод тест для вывода иерархии"""
+        print("использован класс Atribute")
+
 if __name__ == "__main__":
     test_atr = Atribute("str", 8, 8, True, 2)
     print("name = " + test_atr._name)
@@ -51,3 +55,4 @@ if __name__ == "__main__":
     test_atr.set_atribute_skill("skil1", True)
     print("Значение имя навыка = " + str(test_atr.get_skill("skil1").get_name()))
     print("Значение модификатора навыка = " + str(test_atr.get_skill("skil1").get_val()))
+    print(test_atr.test())

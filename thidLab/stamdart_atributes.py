@@ -14,8 +14,11 @@ class Agility(Atribute):
         self.set_atribute_skill("Скрытность", mastered_stealth)
 
 class Body(Atribute):
-    def __init__(self, val:int, bonuse:int, mastered:bool, mastered_val:int):   
-        self.__name = "Телосложение"
+    def __init__(self, val:int, bonuse:int, mastered:bool, mastered_val:int):  
+        super().__init__("Телосложение", val, bonuse, mastered, mastered_val)
+    def test(setlf):
+        print("Использован класс Body")
+        super().test()
 
 class Intelligence(Atribute):
     def __init__(self, val:int, bonuse:int, mastered:bool, mastered_val:int, mastered_analysis: bool, mastered_story: bool, mastered_magic: bool, mastered_nature: bool, mastered_religion: bool):   
@@ -42,9 +45,9 @@ class Charisma(Atribute):
         self.set_atribute_skill("Запугивание", mastered_intimidation)
         self.set_atribute_skill("Обман", mastered_cheating)
         self.set_atribute_skill("Убеждение", mastered_conviction)
-                                 
+                             
 if __name__ == "__main__":
     str = Strenth(14, 0, True, 2, True)
     agl = Agility(13, 0, True, 2, False, False, False)
     bod = Body(13, 0, True, 2)
-    print(type(bod))
+    bod.test()
