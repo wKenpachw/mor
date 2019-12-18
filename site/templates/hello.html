@@ -1,0 +1,16 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+{% if name %} <title>чарник {{name.i}}</title>
+{% else %}  <title>пустой чарник</title>
+{% endif %}
+</head>
+<body>
+    <div> </div>
+{% if name %}
+  <h1>вав {{ name.y }}!</h1>
+{% else %}
+  <h1>Hello World!</h1>
+{% endif %}
+</body>

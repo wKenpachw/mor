@@ -1,0 +1,392 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>пустой чарник</title>
+	
+		<style type="text/css">
+            #oval {
+                width: 55px;
+                height: 15px;
+                background: silver;
+                -moz-border-radius: 100px / 50px;
+                -webkit-border-radius: 100px / 50px;
+                border-radius: 100px / 50px;
+            }
+			
+			
+			#defense {
+				background-image: url(sh.png) ;
+				background-repeat: no-repeat;
+				background-size: 55px 55px;
+				background-position: center;
+				height: auto;
+
+			}
+
+            body {
+                /*max-width: 320px;*/
+            }
+
+            td {
+                border: solid 1px black;
+				text-align: center;
+                
+            }
+
+
+			
+			table {
+				width: 100%;
+			}
+            .div-1 {
+                float: left;
+                height: 30px;
+                width: 360px;
+                background-color: black;
+            }
+            .div-2 {
+                /* Ширина по умолчанию */
+                border: solid 1px black;
+                width: 360px;
+                float: left;
+                height: 20px;
+                overflow: hidden
+            }
+	
+		/* Когда ширина окна до 900 пикселей, ширина  div-2 будет 600px */
+		@media screen and (max-width: 360px){
+			.div-2 {
+				width: 100%;
+			}
+		}
+		/* Когда ширина окна от 1100 пикселей, ширина  div-2 будет 900px */
+		@media screen and (min-width: 1100px){
+			.div-2 {
+				width: 1200px;
+			}
+		}
+	</style>
+		<script>
+			function changeSize(item) {
+				
+				if (item.nodeName == "DIV") {
+					if (item.style.height != "auto") item.style.height = "auto";
+					else item.style.height = "20px";
+				}
+            }
+
+            function atackChanse(item) {	
+                var bonus = item.innerHTML.substring(1, 2);
+                var i = randomInteger(1, 20);
+                var res = i + Number(bonus);
+                alert("Кубик:" + i + " + Бонус:" + bonus + " =" + res);
+				//randomInteger(1, 5) 
+            }
+
+			function randomInteger(min, max) {
+				let rand = min - 0.5 + Math.random() * (max - min + 1);
+				return Math.round(rand);
+			}
+		</script>
+	</head>
+	
+	<body>
+		<header>
+			<div class="div-2">Меню</div>
+		</header>
+	
+		<div class="div-2" id = "12" onclick="changeSize(event.target)">
+			Характеристики
+			<div>
+				<table>
+					<tr>
+						<td >
+							<div>
+								<table align="center">
+									<tr>
+										<td>
+											Сила
+										</td>
+										<td rowspan="3">
+											<input disabled name="StrSpas" type="checkbox"><span ><U>+1</U></span>
+											<br>спасбр
+										</td>
+									</tr>
+									<tr>
+										<td>10</td>
+									</tr>
+									<tr>
+										<td id="oval">+1</td>
+									</tr>
+								</table>
+							</div>
+						</td>
+						<td>
+							<input disabled name="StrSpas" type="checkbox"><span><U>+1</U></span>
+							Атлетика
+						</td>
+					</tr>
+					<tr>
+						<td rowspan="3">
+							<div>
+								<table align="center">
+									<tr>
+										<td>
+											Ловкость
+										</td>
+										<td rowspan="3">
+											<input disabled name="StrSpas" type="checkbox"><span><U>+1</U></span>
+											<br>спасбр
+										</td>
+									</tr>
+									<tr>
+										<td>
+											16
+										</td>
+									</tr>
+									<tr>
+										<td id="oval">
+											+4
+										</td>
+									</tr>
+								</table>
+							</div>
+						</td>
+						<td><input disabled name="AglSpas" type="checkbox"><span><U>+1</U></span> Акробатика</td>
+					</tr>
+					<tr>
+						<td><input disabled name="AglSpas" type="checkbox"><span><U>+1</U></span> Ловкость рук</td>
+					</tr>
+					<tr>
+						<td><input disabled name="AglSpas" type="checkbox"><span><U>+1</U></span> Скрытность</td>
+					</tr>
+					<tr>
+						<td>
+							<div>
+								<table  align="center">
+									<tr>
+										<td>
+											Тело
+										</td>
+										<td rowspan="3">
+											<input disabled name="StrSpas" type="checkbox"><span><U>+1</U></span>
+											<br>спасбр
+										</td>
+									</tr>
+									<tr>
+										<td>
+											1
+										</td>
+									</tr>
+									<tr>
+										<td id="oval">
+											-1
+										</td>
+									</tr>
+								</table>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td rowspan="5">
+							<div>
+								<table  align="center">
+									<tr>
+										<td>
+											Интелект
+										</td>
+										<td rowspan="3">
+											<input disabled name="StrSpas" type="checkbox" checked><span><U>+1</U></span>
+											<br>спасбр
+										</td>
+									</tr>
+									<tr>
+										<td>
+											1
+										</td>
+									</tr>
+									<tr>
+										<td  id="oval">
+											1
+										</td>
+									</tr>
+								</table>
+							</div>
+						</td>
+						<td><input disabled name="IntSpas" type="checkbox"><span><U>+1</U></span> Анализ</td>
+					</tr>
+					<tr>
+						<td><input disabled name="IntSpas" type="checkbox"><span><U>+1</U></span> История</td>
+					</tr>
+					<tr>
+						<td><input disabled name="IntSpas" type="checkbox"><span><U>+1</U></span> Магия</td>
+					</tr>
+					<tr>
+						<td><input disabled name="IntSpas" type="checkbox"><span><U>+1</U></span> Природа</td>
+					</tr>
+					<tr>
+						<td><input disabled name="IntSpas" type="checkbox"><span><U>+1</U></span> Религия</td>
+					</tr>
+					<tr>
+						<td rowspan="5">
+							<div>
+								<table  align="center">
+									<tr>
+										<td>
+											Мудрость
+										</td>
+										<td rowspan="3">
+											<input disabled name="StrSpas" type="checkbox"><span><U>+1</U></span>
+											<br>спасбр
+										</td>
+									</tr>
+									<tr>
+										<td>
+											1
+										</td>
+									</tr>
+									<tr>
+										<td  id="oval">
+											1
+										</td>
+									</tr>
+								</table>
+							</div>
+						</td>
+						<td><input disabled name="MdrSpas" type="checkbox"><span><U>+1</U></span> Внимательность</td>
+					</tr>
+					<tr>
+						<td><input disabled name="MdrSpas" type="checkbox"><span><U>+1</U></span> Выживание</td>
+					</tr>
+					<tr>
+						<td><input disabled name="MdrSpas" type="checkbox"><span><U>+1</U></span> Медицина</td>
+					</tr>
+					<tr>
+						<td><input disabled name="MdrSpas" type="checkbox"><span><U>+1</U></span> Проницательность</td>
+					</tr>
+					<tr>
+						<td><input disabled name="MdrSpas" type="checkbox"><span><U>+1</U></span> Уход за животными</td>
+					</tr>
+					<tr>
+						<td rowspan="5">
+							<div>
+								<table>
+									<tr>
+										<td>
+											Харизма
+										</td>
+										<td rowspan="3">
+											<input disabled name="StrSpas" type="checkbox"><span><U>+1</U></span>
+											<br>спасбр
+										</td>
+									</tr>
+									<tr>
+										<td>
+											1
+										</td>
+									</tr>
+									<tr>
+										<td  id="oval">
+											1
+										</td>
+									</tr>
+								</table>
+							</div>
+						</td>
+						<td><input disabled name="HarSpas" type="checkbox"><span><U>+1</U></span> Выступление</td>
+					</tr>
+					<tr>
+						<td><input disabled name="HarSpas" type="checkbox"><span><U>+1</U></span> Запугивание</td>
+					</tr>
+					<tr>
+						<td><input disabled name="HarSpas" type="checkbox"><span><U>+1</U></span> Обман</td>
+					</tr>
+					<tr>
+						<td><input disabled name="HarSpas" type="checkbox"><span><U>+1</U></span> Убеждение</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="div-2" onclick="changeSize(event.target)">
+			Физические параметры
+			<div>
+				<table>
+					<tr>
+						<td>КД</td>
+						<td>Хиты</td>
+						<td>Временные хиты</td>
+						<td>Текущие</td>
+					</tr>
+					<tr>
+						<td contenteditable="true">14</td>
+						<td contenteditable="true">31</td>
+						<td contenteditable="true">-</td>
+						<td contenteditable="true">31</td>
+					</tr>
+				</table>
+				<table>
+					<tr>
+						<td>Инициатива</td>
+						<td>Вним.</td>
+						<td>Скорость</td>
+						<td>Зрение</td>
+					</tr>
+					<tr>
+						<td contenteditable="true">-</td>
+						<td contenteditable="true">11</td>
+						<td contenteditable="true">25</td>
+						<td contenteditable="true">90</td>
+					</tr>
+				</table>
+				<table>
+					<tr>
+						<td>Успехи</td>
+						<td>Провалы</td>
+
+					</tr>
+					<tr>
+						<td><input name ="live1" type="checkbox"><input name ="live2" type="checkbox"><input name ="live3" type="checkbox"></td>
+						<td><input type="checkbox"><input type="checkbox"><input type="checkbox"></td>
+
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="div-2" onclick="changeSize(event.target)">
+			Атаки и заклинания
+			<div>
+				<table>
+					<tr>
+						<td>Оружие</td>
+						<td>Бонус атаки</td>
+						<td>Урон</td>
+					</tr>
+					<tr>
+						<td>Длинн. Лук</td>
+						<td>+6</td>
+						<td>1к8 + 4</td>
+					</tr>
+					<tr>
+						<td>Парные клинки</td>
+						<td onclick="atackChanse(event.currentTarget)">+6</td>
+						<td>2к6 + 8</td>
+					</tr>
+
+				</table>
+			</div>
+		</div>
+		<div class="div-2" onclick="changeSize(event.target)">
+			Умения и особенности
+			<div>4</div>
+		</div>
+		<div class="div-2" onclick="changeSize(event.target)">
+			Прочие владения и языки
+			<div>5</div>
+		</div>
+		<footer>
+		</footer>
+	
+	</body>
+</html>
