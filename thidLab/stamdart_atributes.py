@@ -13,12 +13,21 @@ class Agility(Atribute):
         self.set_atribute_skill("Ловкость_рук", mastered_hands)
         self.set_atribute_skill("Скрытность", mastered_stealth)
 
+    def __repr__(self):
+        return "Class \"Agility\""
+
+    def test(self):
+         print(self.__repr__() + " extends of " + super().__repr__())
+
 class Body(Atribute):
     def __init__(self, val:int, bonuse:int, mastered:bool, mastered_val:int):  
         super().__init__("Телосложение", val, bonuse, mastered, mastered_val)
-    def test(setlf):
-        print("Использован класс Body")
-        super().test()
+
+    def __repr__(self):
+        return "Class \"Body\""
+
+    def test(self):
+         print(self.__repr__() + " extends of " + super().__repr__())
 
 class Intelligence(Atribute):
     def __init__(self, val:int, bonuse:int, mastered:bool, mastered_val:int, mastered_analysis: bool, mastered_story: bool, mastered_magic: bool, mastered_nature: bool, mastered_religion: bool):   
@@ -47,7 +56,7 @@ class Charisma(Atribute):
         self.set_atribute_skill("Убеждение", mastered_conviction)
                              
 if __name__ == "__main__":
-    str = Strenth(14, 0, True, 2, True)
     agl = Agility(13, 0, True, 2, False, False, False)
+    agl.test()
     bod = Body(13, 0, True, 2)
     bod.test()
