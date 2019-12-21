@@ -30,7 +30,7 @@ class Atribute_skill(object):
         return self._mastered
 
 if __name__ == "__main__":
-    skill = atribute_skill("atl", 4, True, 2)
+    skill = Atribute_skill("atl", 4, True, 2)
     print("значение атрибута = " + str(skill._atr_val))
     print("добавить бонус мастерства? ответ:" + str(skill._mastered))
     print("бонус мастерства = " + str(skill._mastered_val))

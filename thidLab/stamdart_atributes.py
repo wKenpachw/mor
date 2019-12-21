@@ -3,7 +3,7 @@ class Strenth(Atribute):
     def __init__(self, val:int, bonuse:int, mastered:bool, mastered_val:int, mastered_atletic: bool):   
         self._name = "Сила"
         self.set_atribute_skill("Атлетика", mastered_atletic)
-        def get_atletic_value(self):
+    def get_atletic_value(self):
             self.get_skill("Атлетика").get_val()
 
 class Agility(Atribute):
