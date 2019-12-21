@@ -1,6 +1,6 @@
 import random
 import math
-from atribute_pack.atribute_skill import Atribute_skill
+from atribute_skill import Atribute_skill
 
 class Atribute(object):
     _name           = str()
@@ -15,18 +15,26 @@ class Atribute(object):
         self._name = name
         self._val = val
         self._bonuse = bonuse
-        self.set_modificator()
-        self._modificator = self.get_modificator()
+        self.set_modificator(self._val, self._bonuse)
+        #self._modificator = self.get_modificator()
         self._mastered = mastered
         self._mastered_val = mastered_val
         #val_to_modificator = lambda x, y: ceil(((x + y) - 1)/2) - 5
 
-    def set_modificator(self):
+    def update_skill_modificator(self, skill:Atribute_skill):
+        skill.update_val(self.get_modificator())
+        return skill
+
+    def set_modificator(self, val, bonuse):
         val_to_modificator = lambda x, y: math.ceil(((x + y) - 1)/2) - 5
-        self._modificator = val_to_modificator(self._val,self._bonuse)
+        self._modificator = val_to_modificator(val, bonuse)
+       # self._atribute_skills = map(self.update_skill_modificator, self._atribute_skills.items())
+        self._atribute_skills = dict(map(lambda x: (x[0],  self.update_skill_modificator(x[1])), self._atribute_skills.items() ))
 
     def get_modificator(self):
         return self._modificator
+    
+
 
     def get_rand_save_value(self):
         result = int(random.randint(1, 20)) + int(self.get_modificator())
@@ -71,7 +79,13 @@ if __name__ == "__main__":
     print("создадим навык атрибута с имененм skil1 и с бонусом мастерства")
     test_atr.set_atribute_skill("skil1", True)
     print("Значение имя навыка = " + str(test_atr.get_skill("skil1").get_name()))
-    print("Значение модификатора навыка = " + str(test_atr.get_skill_modify("skil1")))
+    print("Значение модификатора навыка = " + str(test_atr.get_skill_modify("skil1")))    
     print("Значение спасброска навыка = " + str(test_atr.check_skill("skil1")))
     print(test_atr.test())
+    print("Изменим модификатор атрибута на 10 и проверим значение модификатора навыка")
+    test_atr.set_modificator(10, 0)   
+    print("modificator = " + str(test_atr.get_modificator()))
+    print("Значение имя навыка = " + str(test_atr.get_skill("skil1").get_name()))
+    print("Значение модификатора навыка = " + str(test_atr.get_skill_modify("skil1")))    
+    print("Значение спасброска навыка = " + str(test_atr.check_skill("skil1")))
     

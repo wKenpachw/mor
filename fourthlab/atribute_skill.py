@@ -21,7 +21,10 @@ class Atribute_skill(object):
             self._mastered_val = self._mastered_val
         else:
             self._mastered_val = 0
-            
+
+    def update_val(self, val):
+        self._atr_val = val
+
     def get_val(self):
         return (self._atr_val + self._mastered_val)
 
@@ -36,8 +39,9 @@ class Atribute_skill(object):
 
 if __name__ == "__main__":
     skill = Atribute_skill("atl", 4, True, 2)
+    skill.update_val(1)
     print("значение атрибута = " + str(skill._atr_val))
     print("добавить бонус мастерства? ответ:" + str(skill._mastered))
     print("бонус мастерства = " + str(skill._mastered_val))
-    print("значение навыка = " + str(skill._val))
+    print("значение навыка = " + str(skill.get_val()))
     print("спасбросок = " + str(skill.check_skill()))    
