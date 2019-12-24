@@ -33,8 +33,6 @@ class Atribute(object):
 
     def get_modificator(self):
         return self._modificator
-    
-
 
     def get_rand_save_value(self):
         result = int(random.randint(1, 20)) + int(self.get_modificator())
