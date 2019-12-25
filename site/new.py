@@ -1,36 +1,29 @@
-from flask import Flask, render_template
+import flask 
+import pandas as pd
+import os.path
 
-app = Flask(__name__)
+app = flask.Flask(__name__)
 
-class MyClass:
-    """A simple example class"""
-    i = 12345
-    y = 1321313
-
-x = MyClass()
 
 @app.route('/')
 def index():
-    return 'Index Page'
+    with open(os.path.dirname(__file__)+'/data.txt', 'r', encoding='utf-8') as f:
+        #dataframe = pd.read_csv(f, sep='\t', names=['name', 'version', 'size', 'date'], parse_dates=[3])
+        exls = pd.read_excel(os.path.dirname(__file__)+'/data.xlsx', sheet_name='Лист1', names=['name', 'KD', 'HP', 'speed'])
+    return flask.render_template('index.html', data=exls.iterrows())
 
-@app.route('/hello/<name>')
-def hello(name=None):
-    return render_template('hello.html', name=x)
 
 @app.route('/char')
 def char(name=None):
-    return render_template('char.html')
+    return flask.render_template('char.html')
 
 @app.route('/chars/<int:post_id>')
 def show_post(post_id):
     return 'Post %d' % post_id
 
-app.run(host='0.0.0.0')
 if __name__ == '__main__':
     app.debug = True
     app.run(debug = True)
 
-class man ():
-    name = "Dan"
 
 
