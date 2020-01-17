@@ -1,0 +1,32 @@
+15) функции высшего порядка. Частичное применение
+Функции высшего порядка могут принимать функции как аргументы и возвращать их.
+
+def summation(nums):
+    return sum(nums)
+
+def action(func, numbers):
+    return func(numbers)
+
+print(action(summation, [1, 2, 3]))
+
+# Output is 6 # Вывод 6
+
+Частичное применение позволяет вызвать функцию без использования всех заданных аргументов
+
+def power(base, exponent):
+  return base ** exponent
+  ----
+from functools import partial
+
+square = partial(power, exponent=2)
+print(square(2))
+
+# output is 4 # вывод 4
+
+
+powers = []
+for x in range(2, 1001):
+  powers.append(partial(power, exponent = x))
+
+print(powers[0](3))
+# output is 9 # вывод 9
