@@ -3,8 +3,13 @@
 	<head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>пустой чарник</title>
-	
+	<title>
+		{% if char_name %}
+  			чарник {{ char_name }}
+		{% else %}
+  			Пустой чарник
+		{% endif %}
+</title>
 		<style type="text/css">
             #oval {
                 width: 55px;
@@ -94,7 +99,11 @@
 	
 	<body>
 		<header>
-			<div class="div-2">Меню</div>
+			<div class="div-2">Меню {% if char_name %}
+				чарник {{ char_name }}
+		  {% else %}
+				Пустой чарник
+		  {% endif %}</div>
 		</header>
 	
 		<div class="div-2" id = "12" onclick="changeSize(event.target)">
