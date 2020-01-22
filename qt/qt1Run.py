@@ -1,4 +1,9 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 from PyQt5 import QtWidgets
+import pandas as pd
+import os.path
 from qt1 import Ui_MainWindow  # импорт нашего сгенерированного файла
 import sys
 import random
@@ -13,6 +18,16 @@ class mywindow(QtWidgets.QMainWindow):
             print(res)
             kubs -= 1    
     
+    def read_as(self, table):
+        os.chdir('D:\GitHub\MorozovAP\qt')
+        with open('./data.txt', 'r', encoding='utf-8') as f:
+            csv_data = pd.read_csv(f, sep=';')
+            for j in range(0, csv_data['name'].count()):
+                table.insertRow(0)
+                for i in range(0, 5):
+                    table.setItem(0 , i,  QtWidgets.QTableWidgetItem(str (csv_data.loc[j][i])))
+
+
     def __init__(self):
         super(mywindow, self).__init__()
         self.ui = Ui_MainWindow()
@@ -21,7 +36,8 @@ class mywindow(QtWidgets.QMainWindow):
         add_b = self.ui.pushButton_2
         add_b.setText("Добавить")
         add_b.clicked.connect(self.add_row)
-
+        table = self.ui.tableWidget
+        self.read_as(table)
         dell_b = self.ui.pushButton_3
         dell_b.clicked.connect(self.del_row)
         dell_b.setText("Удалить")
@@ -75,6 +91,5 @@ class mywindow(QtWidgets.QMainWindow):
         
 app = QtWidgets.QApplication([])
 application = mywindow()
-application.show()
- 
+application.show() 
 sys.exit(app.exec())
