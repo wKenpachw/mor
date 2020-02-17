@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\Лёха\Documents\PyCharm\MorozovAP\qt\untitled.ui'
+# Form implementation generated from reading ui file 'D:\GitHub\MorozovAP\qt\untitled.ui'
 #
-# Created by: PyQt5 UI code generator 5.9.2
+# Created by: PyQt5 UI code generator 5.13.0
 #
 # WARNING! All changes made in this file will be lost!
 
+
 from PyQt5 import QtCore, QtGui, QtWidgets
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -54,7 +56,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 198, 803))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 198, 807))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(200)
         sizePolicy.setVerticalStretch(200)
@@ -79,7 +81,7 @@ class Ui_MainWindow(object):
         self.pushButton.setObjectName("pushButton")
         self.verticalLayout.addWidget(self.pushButton)
         self.label = QtWidgets.QLabel(self.scrollAreaWidgetContents)
-        self.label.setGeometry(QtCore.QRect(10, 190, 161, 31))
+        self.label.setGeometry(QtCore.QRect(10, 160, 161, 31))
         font = QtGui.QFont()
         font.setPointSize(14)
         font.setBold(True)
@@ -92,57 +94,11 @@ class Ui_MainWindow(object):
         self.label.setText("")
         self.label.setWordWrap(True)
         self.label.setObjectName("label")
-        self.label_2 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
-        self.label_2.setGeometry(QtCore.QRect(10, 280, 161, 31))
-        font = QtGui.QFont()
-        font.setPointSize(14)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_2.setFont(font)
-        self.label_2.setFrameShape(QtWidgets.QFrame.Panel)
-        self.label_2.setFrameShadow(QtWidgets.QFrame.Plain)
-        self.label_2.setLineWidth(2)
-        self.label_2.setMidLineWidth(3)
-        self.label_2.setText("")
-        self.label_2.setWordWrap(True)
-        self.label_2.setObjectName("label_2")
-        self.label_3 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
-        self.label_3.setGeometry(QtCore.QRect(10, 150, 61, 31))
-        font = QtGui.QFont()
-        font.setPointSize(14)
-        self.label_3.setFont(font)
-        self.label_3.setObjectName("label_3")
-        self.label_4 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
-        self.label_4.setGeometry(QtCore.QRect(10, 240, 161, 31))
-        font = QtGui.QFont()
-        font.setPointSize(14)
-        self.label_4.setFont(font)
-        self.label_4.setObjectName("label_4")
-        self.label_5 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
-        self.label_5.setGeometry(QtCore.QRect(10, 380, 161, 31))
-        font = QtGui.QFont()
-        font.setPointSize(14)
-        self.label_5.setFont(font)
-        self.label_5.setObjectName("label_5")
-        self.label_6 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
-        self.label_6.setGeometry(QtCore.QRect(10, 420, 171, 31))
-        font = QtGui.QFont()
-        font.setPointSize(14)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_6.setFont(font)
-        self.label_6.setFrameShape(QtWidgets.QFrame.Panel)
-        self.label_6.setFrameShadow(QtWidgets.QFrame.Plain)
-        self.label_6.setLineWidth(2)
-        self.label_6.setMidLineWidth(3)
-        self.label_6.setText("")
-        self.label_6.setWordWrap(True)
-        self.label_6.setObjectName("label_6")
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.gridLayout_2.addWidget(self.scrollArea, 0, 1, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 925, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 925, 25))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -158,7 +114,3 @@ class Ui_MainWindow(object):
         self.pushButton_2.setText(_translate("MainWindow", "PushButton"))
         self.pushButton_3.setText(_translate("MainWindow", "PushButton"))
         self.pushButton.setText(_translate("MainWindow", "PushButton"))
-        self.label_3.setText(_translate("MainWindow", "Урон:"))
-        self.label_4.setText(_translate("MainWindow", "Попадание:"))
-        self.label_5.setText(_translate("MainWindow", "Наименование:"))
-
