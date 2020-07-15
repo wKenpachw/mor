@@ -9,7 +9,15 @@ from qt1 import Ui_MainWindow  # импорт нашего сгенериров�
 import sys
 import random
 import sqlA
- 
+import io
+
+
+def is_number(str):
+    try:
+        float(str)
+        return True
+    except ValueError:
+        return False
  
 class mywindow(QtWidgets.QMainWindow):
 
@@ -19,6 +27,8 @@ class mywindow(QtWidgets.QMainWindow):
             res += random.randint(1, maxR)
             kubs -= 1
         return res*i
+
+
 
     def atack_vall(self,text, label, label_2):
         try:
@@ -78,12 +88,25 @@ class mywindow(QtWidgets.QMainWindow):
             for line in attaks:
                 combo.addItem(str(line[3]) +'| ' + line[2])
                 table.setCellWidget(0, 4, combo)"""
+    
+    def read_file(self):
+        table = self.ui.tableWidget
+        fname = QtWidgets.QFileDialog.getOpenFileName(self, 'Open file', 'C:\\')
+        with io.open(fname[0], encoding='utf-8') as file:
+            data = file.readline()
+            while (data):
+                print(data)
+                table.insertRow(0)
+                cells = data.split(";")                
+                for i in range(0, len(cells)):
+                    table.setItem(0 , i,  QtWidgets.QTableWidgetItem(str (cells[i])))
+                data = file.readline()
 
     def __init__(self):
         super(mywindow, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.start_table(self.ui.tableWidget)
+        self.start_table(self.ui.tableWidget, self.ui.pushButton_5)
         add_b = self.ui.pushButton_2
         add_b.setText("Добавить")
         add_b.clicked.connect(self.add_row)
@@ -97,12 +120,33 @@ class mywindow(QtWidgets.QMainWindow):
         strike_b.setText("Удар!")
         strike_b.clicked.connect(self.show_atack)
 
-    def start_table(self, table):
-        table.setColumnCount(5)
-        table.setHorizontalHeaderLabels(["Имя", "Инициатива", "Текущее ХП", "Макс ХП", "Урон атакой"])
+        add_file = self.ui.pushButton_4
+        add_file.setText("Взять из файла")
+        add_file.clicked.connect(self.read_file)
+
+    def start_table(self, table, pushButton):
+        table.setColumnCount(7)
+        table.setHorizontalHeaderLabels(["Имя", "Инициатива", "Ударили на", "Текущее ХП", "Урон атакой", "KD", "Описание"])
         table.setSortingEnabled(True)
         table.sortByColumn(1,1)
+        def sum_hp(self):  
+            try:
+                row = table.currentRow()
+                cell = table.item(row, 2)
+                if (cell.text() != ""):
+                    next_cell = table.item(row, 3)
+                    val_1 = next_cell.text()
+                    val_2 = cell.text()
+                    if ((is_number(val_1)) & is_number(val_2)):
+                        val_1 = int(val_1)
+                        val_2 = int(val_2)                    
+                        next_cell.setText(str(val_1 - val_2))
+                cell.setText("")
+            except:
+                print("choose line")
+        pushButton.clicked.connect(sum_hp)
 
+    
     def add_row(self):
         table = self.ui.tableWidget
         i = table.rowCount() + 1
@@ -135,6 +179,8 @@ class mywindow(QtWidgets.QMainWindow):
         elif (str(type (cell)) == '<class \'PyQt5.QtWidgets.QTableWidgetItem\'>'):
             #if (len(cell.text()) != 0): 
             self.atack_vall(cell.text(), label, label_2)
+    
+
 
 
         
